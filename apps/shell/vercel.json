@@ -1,0 +1,6 @@
+{
+  "installCommand": "npm install --prefix ../..",
+  "buildCommand": "npx nx build shell --prod",
+  "outputDirectory": "dist/apps/shell",
+  "framework": null
+}
