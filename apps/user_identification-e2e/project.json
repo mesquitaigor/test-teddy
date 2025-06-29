@@ -1,8 +1,8 @@
 {
   "name": "user_identification-e2e",
-  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "user_identification-e2e/src",
+  "sourceRoot": "apps/user_identification-e2e/src",
   "tags": [],
   "implicitDependencies": ["user_identification"],
   "// targets": "to see all targets run: nx show project user_identification-e2e --web",

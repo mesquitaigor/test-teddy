@@ -1,8 +1,8 @@
 export default {
   displayName: 'user_identification',
-  preset: '../jest.preset.js',
+  preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../coverage/user_identification',
+  coverageDirectory: '../../coverage/apps/user_identification',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

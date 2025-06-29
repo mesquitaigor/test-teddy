@@ -15,10 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@app-workspace/clients/*": ["apps/clients/src/app/remote-entry/*"],
-      "clients/Routes": ["apps/clients/src/app/remote-entry/entry.routes.ts"],
       "user_identification/Routes": [
-        "user_identification/src/app/remote-entry/entry.routes.ts"
+        "apps/user_identification/src/app/remote-entry/entry.routes.ts"
       ]
     }
   },

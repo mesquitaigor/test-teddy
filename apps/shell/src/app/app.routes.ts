@@ -1,5 +1,7 @@
-import { NxWelcome } from './nx-welcome';
 import { Route } from '@angular/router';
+
+import { NxWelcome } from './nx-welcome';
+
 
 export const appRoutes: Route[] = [
   {
