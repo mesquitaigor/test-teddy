@@ -4,8 +4,8 @@
   "outputDirectory": "dist/apps/user_identification",
   "rewrites": [
     {
-      "source": "/remoteEntry.js",
-      "destination": "/remoteEntry.js"
+      "source": "/remoteEntry.mjs",
+      "destination": "/remoteEntry.mjs"
     },
     {
       "source": "/(.*)",
