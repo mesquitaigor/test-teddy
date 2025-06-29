@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "clients/Routes": ["apps/clients/src/app/remote-entry/entry.routes.ts"],
       "user_identification/Routes": [
         "apps/user_identification/src/app/remote-entry/entry.routes.ts"
       ]
