@@ -1,0 +1,11 @@
+<div class="login-content">
+  <h1>Olá, seja bem&#8209;vindo!</h1>
+  <input
+    appAutofocus
+    [(ngModel)]="user"
+    name="username"
+    placeholder="Digite seu nome"
+    type="text"
+  />
+  <app-teddy-button size="large" [fill]="true" [disabled]="user.length === 0" (click)="handleEntry()">Entrar</app-teddy-button>
+</div>
