@@ -1,15 +1,30 @@
 {
   "framework": null,
-  "buildCommand": "npm install --prefix ../.. && npx nx build user_identification --prod",
+  "buildCommand": "npm install --prefix ../.. && npx nx build user_identification --configuration=production",
   "outputDirectory": "dist/apps/user_identification",
-  "rewrites": [
-    {
-      "source": "/remoteEntry.mjs",
-      "destination": "/remoteEntry.mjs"
-    },
+  "headers": [
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/remoteEntry.js",
+      "destination": "/remoteEntry.js"
     }
   ]
 }
