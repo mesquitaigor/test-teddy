@@ -1,0 +1,15 @@
+{
+  "framework": null,
+  "buildCommand": "npm install --prefix ../.. && npx nx build user_identification --prod",
+  "outputDirectory": "dist/apps/user_identification",
+  "rewrites": [
+    {
+      "source": "/remoteEntry.js",
+      "destination": "/remoteEntry.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
