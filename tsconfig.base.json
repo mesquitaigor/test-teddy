@@ -15,7 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "clients/Routes": ["apps/clients/src/app/remote-entry/entry.routes.ts"]
+      "@app-workspace/clients/*": ["apps/clients/src/app/remote-entry/*"],
+      "clients/Routes": ["apps/clients/src/app/remote-entry/entry.routes.ts"],
+      "user_identification/Routes": [
+        "user_identification/src/app/remote-entry/entry.routes.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
