@@ -1,11 +1,6 @@
 {
-  "framework": null,
-  "buildCommand": "npm install --prefix ../.. && npx nx build shell --configuration=production",
+  "installCommand": "npm install --prefix ../..",
+  "buildCommand": "npx nx build shell --prod",
   "outputDirectory": "dist/apps/shell",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
+  "framework": null
 }

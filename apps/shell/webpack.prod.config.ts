@@ -1,7 +1,5 @@
 import { withModuleFederation } from '@nx/module-federation/angular';
-
 import config from './module-federation.config';
-
 
 /**
  * DTS Plugin is disabled in Nx Workspaces as Nx already provides Typing support for Module Federation
@@ -21,9 +19,6 @@ export default withModuleFederation(
      *   ['app2', 'https://app2.example.com'],
      * ]
      */
-    remotes: [
-      ['user_identification', 'https://user-identification-teddy.vercel.app'],
-    ],
   },
   { dts: false }
 );

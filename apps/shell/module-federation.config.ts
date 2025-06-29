@@ -3,8 +3,6 @@ import { ModuleFederationConfig } from '@nx/module-federation';
 
 const config: ModuleFederationConfig = {
   name: 'shell',
-  remotes: [
-    'user_identification',
-  ],
+  remotes: [],
 };
 export default config;

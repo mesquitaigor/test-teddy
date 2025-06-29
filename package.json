@@ -2,13 +2,7 @@
   "name": "@teddy/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {
-    "build:shell": "nx build shell --configuration=production",
-    "build:user-identification": "nx build user_identification --configuration=production",
-    "build:all": "nx run-many --target=build --configuration=production --parallel=false",
-    "serve:shell": "nx serve shell",
-    "serve:user-identification": "nx serve user_identification"
-  },
+  "scripts": {},
   "private": true,
   "dependencies": {
     "@angular/common": "~20.0.0",
