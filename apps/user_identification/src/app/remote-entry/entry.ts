@@ -1,12 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-
-import { NxWelcome } from './nx-welcome';
-
+import { UserIdentificationComponent } from './user-identification.component';
 
 @Component({
-  imports: [CommonModule, NxWelcome],
+  imports: [CommonModule, UserIdentificationComponent],
   selector: 'app-user-identification-entry',
-  template: `<app-nx-welcome></app-nx-welcome>`,
+  styles: [':host { background-color: red; display: block; height: 100vh; }'],
+  template: `<app-user-identification></app-user-identification>`,
 })
 export class RemoteEntry {}
