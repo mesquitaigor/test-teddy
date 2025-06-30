@@ -1,15 +1,18 @@
 <div class="page-header">
-  <p><strong>16</strong> clientes encontrados:</p>
+  <p><strong>{{(clients$ | async)?.length}}</strong> clientes encontrados:</p>
   <div class="per-page-select">
     <p>Clientes por página:</p>
     <select
       name="per-page"
       class="form-select"
       aria-label="Default select example"
+      [(ngModel)]="itemsPerPage"
+      (change)="loadClients()"
     >
-      <option selected>10 por página</option>
-      <option value="20">20 por página</option>
-      <option value="50">50 por página</option>
+      <option value="4">4 por página</option>
+      <option value="8">8 por página</option>
+      <option value="16" selected>16 por página</option>
+      <option value="24">24 por página</option>
     </select>
   </div>
 </div>
@@ -30,25 +33,15 @@
     (click)="handleOpenCreateForm()"
     >Criar cliente</lib-teddy-button
   >
+  @if(totalPages > 1){
   <div class="pagination-content">
-    <!-- Botão de voltar -->
-    <lib-teddy-button
-      size="small"
-      apparence="outline"
-      [disabled]="currentPage === 1"
-      (click)="goToPreviousPage()"
-    >
-      ← Anterior
-    </lib-teddy-button>
-
-    <!-- Páginas -->
     <div class="pagination-pages">
       @for (page of getVisiblePages(); track page) { @if (page === 0) {
       <span class="pagination-dots">...</span>
       } @else {
       <lib-teddy-button
         size="small"
-        [apparence]="currentPage === page ? 'normal' : 'outline'"
+        [apparence]="currentPage === page ? 'normal' : 'ghost'"
         [class.current-page]="currentPage === page"
         (click)="goToPage(page)"
       >
@@ -56,15 +49,6 @@
       </lib-teddy-button>
       } }
     </div>
-
-    <!-- Botão de avançar -->
-    <lib-teddy-button
-      size="small"
-      apparence="outline"
-      [disabled]="currentPage === totalPages"
-      (click)="goToNextPage()"
-    >
-      Próxima →
-    </lib-teddy-button>
   </div>
+  }
 </div>

@@ -1,20 +1,27 @@
 :host {
   display: block;
+  width: 100%;
   min-height: 100vh;
   min-height: 100dvh;
   margin: 0;
   background-color: rgba(245, 245, 245, 1);
-  padding: 1.875rem 7.5rem;
+  padding: 1.875rem 2.5rem;
+  box-sizing: border-box;
   .page-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 0.625rem;
+    > p {
+      font-size: 0.875rem;
+    }
     .per-page-select {
       display: flex;
       align-items: center;
       gap: 0.5rem;
       p {
-        font-size: 1.125rem;
+        display: none;
+        font-size: 0.875rem;
       }
       select {
         background-color: transparent;
@@ -26,7 +33,7 @@
   }
   .clients-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: 1fr; // Mobile first: 1 coluna
     gap: 1rem;
     width: 100%;
     margin-bottom: 1.25rem;
@@ -72,19 +79,55 @@
           color: rgba(0, 0, 0, 0.6);
           font-weight: bold;
         }
-
-        lib-teddy-button {
-          min-width: 2.5rem;
-        }
       }
+    }
+  }
 
-      lib-teddy-button {
-        &:first-child,
-        &:last-child {
-          min-width: auto;
-          padding: 0 1rem;
-        }
+  @media (min-width: 576px) {
+    .page-header .per-page-select p {
+      display: flex;
+    }
+    .clients-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 768px) {
+    padding: 1.875rem 2.5rem;
+
+    .page-header {
+      > p {
+        font-size: 1.125rem;
       }
+      .per-page-select p {
+        font-size: 1.125rem;
+      }
+    }
+    .clients-list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 992px) {
+    padding: 1.875rem 5rem;
+    .clients-list {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    padding: 1.875rem 7.5rem;
+    .clients-list {
+      grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .clients-list {
+      grid-template-columns: repeat(5, 1fr);
+      max-width: 1600px;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 }

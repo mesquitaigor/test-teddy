@@ -3,9 +3,6 @@
   transition: 0.2s;
   &.fill {
     width: 100%;
-    button {
-      justify-content: center;
-    }
   }
   &.disabled {
     pointer-events: none;
@@ -37,6 +34,13 @@
       color: white;
     }
   }
+  &.ghost button {
+    background-color: transparent;
+    color: black;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+  }
   button {
     display: flex;
     color: white;
@@ -48,6 +52,7 @@
     outline: none;
     cursor: pointer;
     transition: 0.2s;
+    justify-content: center;
     &:hover {
       background-color: rgb(209, 91, 32);
     }

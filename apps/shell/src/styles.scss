@@ -5,7 +5,6 @@ html {
 body {
   min-height: 100vh;
   min-height: 100dvh;
-  margin: 0;
   line-height: 1;
   > * {
     font-family: 'Inter', sans-serif;
@@ -126,4 +125,7 @@ select {
 }
 select {
   cursor: pointer;
+}
+div {
+  box-sizing: border-box;
 }

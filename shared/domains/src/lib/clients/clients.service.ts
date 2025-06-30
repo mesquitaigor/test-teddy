@@ -11,9 +11,14 @@ import { Client } from './Client';
 export class ClientsService {
   private readonly httpClient = inject(HttpClient);
   readonly clients$ = new BehaviorSubject<Client[]>([]);
-  load(): Observable<ClientDataResponse> {
+  load(page: number, limit: number): Observable<ClientDataResponse> {
     return this.httpClient
-      .get<ClientDataResponse>('https://boasorte.teddybackoffice.com.br/users')
+      .get<ClientDataResponse>(
+        'https://boasorte.teddybackoffice.com.br/users',
+        {
+          params: { page, limit },
+        }
+      )
       .pipe(
         tap((response: ClientDataResponse) => {
           const clients = response.clients.map(

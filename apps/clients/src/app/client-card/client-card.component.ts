@@ -1,5 +1,5 @@
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { TeddyButtonComponent } from '@teddy/components';
-import { Component, inject, Input } from '@angular/core';
 import { ClientModalService } from '@teddy/components';
 import { ClientsService } from '@teddy/domains';
 import { CommonModule } from '@angular/common';
@@ -13,6 +13,7 @@ import { Client } from '@teddy/domains';
 })
 export class ClientCardComponent {
   @Input({ required: true }) client!: Client;
+  @Output() reloadData = new EventEmitter<void>();
   private readonly clientsService = inject(ClientsService);
   private readonly clientFormService = inject(ClientModalService);
   handleEditClient(): void {
@@ -26,7 +27,7 @@ export class ClientCardComponent {
       data: this.client,
       action,
       onClose: () => {
-        this.clientsService.load().subscribe();
+        this.reloadData.emit();
       },
     });
   }

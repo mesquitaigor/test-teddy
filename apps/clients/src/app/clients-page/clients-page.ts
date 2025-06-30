@@ -2,13 +2,19 @@ import { ClientModalService, TeddyButtonComponent } from '@teddy/components';
 import { Component, inject, OnInit } from '@angular/core';
 import { ClientsService } from '@teddy/domains';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { finalize } from 'rxjs';
 
 import { ClientCardComponent } from '../client-card/client-card.component';
 
 @Component({
   selector: 'app-clients-page',
-  imports: [CommonModule, ClientCardComponent, TeddyButtonComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ClientCardComponent,
+    TeddyButtonComponent,
+  ],
   templateUrl: './clients-page.html',
   styleUrl: './clients-page.scss',
 })
@@ -20,12 +26,27 @@ export class ClientsPage implements OnInit {
 
   currentPage = 1;
   totalPages = 1;
-  itemsPerPage = 10;
+  itemsPerPage = 16;
 
   ngOnInit(): void {
     this.loading = true;
+    this.loadClients(true);
+  }
+
+  handleOpenCreateForm(): void {
+    this.clientFormService.open({
+      onClose: () => {
+        this.loadClients();
+      },
+    });
+  }
+
+  loadClients(displayLoad = false): void {
+    if (displayLoad) {
+      this.loading = true;
+    }
     this.clientsService
-      .load()
+      .load(this.currentPage, this.itemsPerPage)
       .pipe(finalize(() => (this.loading = false)))
       .subscribe({
         next: (result) => {
@@ -34,29 +55,10 @@ export class ClientsPage implements OnInit {
       });
   }
 
-  handleOpenCreateForm(): void {
-    this.clientFormService.open({
-      onClose: () => {
-        this.clientsService.load().subscribe();
-      },
-    });
-  }
-
   goToPage(page: number): void {
     if (page >= 1 && page <= this.totalPages) {
       this.currentPage = page;
-    }
-  }
-
-  goToPreviousPage(): void {
-    if (this.currentPage > 1) {
-      this.goToPage(this.currentPage - 1);
-    }
-  }
-
-  goToNextPage(): void {
-    if (this.currentPage < this.totalPages) {
-      this.goToPage(this.currentPage + 1);
+      this.loadClients();
     }
   }
 
