@@ -1,10 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { UserService } from '@teddy/auth';
 import { Router } from '@angular/router';
-import { AutofocusDirective } from './autofocus.directive';
+
 import { TeddyButtonComponent } from './teddy-button/teddy-button.component';
-import { UserService } from './services/user.service';
+import { AutofocusDirective } from './autofocus.directive';
+
 
 @Component({
   selector: 'app-user-identification',
