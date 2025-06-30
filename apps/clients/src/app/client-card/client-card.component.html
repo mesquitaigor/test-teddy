@@ -1,8 +1,8 @@
 <p class="client-name">
   <strong>{{ client?.name }}</strong>
 </p>
-<p>Salário: {{client?.salary}}</p>
-<p>Empresa: R$ 1,00</p>
+<p>Salário: {{client?.salary | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</p>
+<p>Empresa: {{client?.companyValuation | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</p>
 <div class="actions">
   <app-teddy-button apparence="icon"><img src="plus.png" alt="Selecionar" /></app-teddy-button>
   <app-teddy-button apparence="icon"><img src="pencil.png" alt="Editar" /></app-teddy-button>

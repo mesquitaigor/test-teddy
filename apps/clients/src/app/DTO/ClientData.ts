@@ -2,7 +2,7 @@ export interface ClientData {
   id: string;
   name: string;
   salary: number;
-  company: string;
+  companyValuation: string;
 }
 
 export interface ClientDataResponse {

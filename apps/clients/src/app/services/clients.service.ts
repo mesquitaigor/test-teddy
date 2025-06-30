@@ -16,7 +16,7 @@ export class ClientsService {
       .subscribe({
         next: (response: ClientDataResponse) => {
           const clients = response.clients.map(
-            (item) => new Client(item.id, item.name, item.salary, item.company),
+            (item) => new Client(item.id, item.name, item.salary, item.companyValuation),
           );
           this.clients$.next(clients);
         },
