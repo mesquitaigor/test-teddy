@@ -14,16 +14,20 @@
   </div>
 </div>
 <div class="clients-list">
-  @for (client of clients$ | async; track client.id) {
+  @if(!loading){ @for (client of clients$ | async; track client.id) {
   <app-client-card [client]="client"></app-client-card>
+  } } @else {
+  <div class="loading">
+    <p>Carregando clientes...</p>
+  </div>
   }
 </div>
 <div class="clients-footer">
-  <app-teddy-button
+  <lib-teddy-button
     [fill]="true"
     size="small"
     apparence="outline"
     (click)="handleOpenCreateForm()"
-    >Criar cliente</app-teddy-button
+    >Criar cliente</lib-teddy-button
   >
 </div>

@@ -1,4 +1,4 @@
-@if(openState$ | async) {
+@if((modalData$ | async)?.stt) {
 <div class="modal-background">
   <div class="modal-content">
     <div class="modal-header">
@@ -22,7 +22,7 @@
         [maskito]="moneyMask"
       />
       <lib-teddy-button
-        [disabled]="creating"
+        [disabled]="creating || !control.valid"
         [fill]="true"
         size="small"
         (click)="handleSubmit()"

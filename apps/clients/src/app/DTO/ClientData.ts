@@ -1,8 +1,8 @@
 export interface ClientData {
-  id: string;
+  id: number;
   name: string;
   salary: number;
-  companyValuation: string;
+  companyValuation: number;
 }
 
 export interface CreateClientData {
