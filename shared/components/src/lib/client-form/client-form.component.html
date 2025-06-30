@@ -1,13 +1,14 @@
+@if(openState$ | async) {
 <div class="modal-background">
   <div class="modal-content">
     <div class="modal-header">
       <h2>Client Form</h2>
-      <lib-teddy-button apparence="icon"
+      <lib-teddy-button apparence="icon" (click)="handleClose()"
         ><img src="close.png" alt="Fechar"
       /></lib-teddy-button>
     </div>
     <form [formGroup]="control">
-      <input type="text" placeholder="Digite o nome:" />
+      <input type="text" placeholder="Digite o nome:" formControlName="name" />
       <input
         type="text"
         placeholder="Digite o salário:"
@@ -20,7 +21,15 @@
         formControlName="companyValuationInput"
         [maskito]="moneyMask"
       />
-      <lib-teddy-button [fill]="true" size="small">Salvar</lib-teddy-button>
+      <lib-teddy-button
+        [disabled]="creating"
+        [fill]="true"
+        size="small"
+        (click)="handleSubmit()"
+        >{{ !creating ? 'Salvar' : 'Salvando...' }}</lib-teddy-button
+      >
     </form>
   </div>
 </div>
+
+}

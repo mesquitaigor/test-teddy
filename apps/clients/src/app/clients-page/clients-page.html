@@ -19,7 +19,11 @@
   }
 </div>
 <div class="clients-footer">
-  <app-teddy-button [fill]="true" size="small" apparence="outline"
+  <app-teddy-button
+    [fill]="true"
+    size="small"
+    apparence="outline"
+    (click)="handleOpenCreateForm()"
     >Criar cliente</app-teddy-button
   >
 </div>

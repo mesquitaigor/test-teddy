@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+import { ClientDataResponse, CreateClientData } from '../DTO/ClientData';
 import Client from '../models/Client';
-import { ClientDataResponse } from '../DTO/ClientData';
 
 @Injectable({
   providedIn: 'root',
@@ -16,10 +17,21 @@ export class ClientsService {
       .subscribe({
         next: (response: ClientDataResponse) => {
           const clients = response.clients.map(
-            (item) => new Client(item.id, item.name, item.salary, item.companyValuation),
+            (item) =>
+              new Client(item.id, item.name, item.salary, item.companyValuation)
           );
           this.clients$.next(clients);
         },
       });
+  }
+  create(client: CreateClientData): Observable<void> {
+    return this.httpClient.post<void>(
+      'https://boasorte.teddybackoffice.com.br/users',
+      {
+        name: client.name,
+        salary: client.salary,
+        companyValuation: client.companyValuation,
+      }
+    );
   }
 }
