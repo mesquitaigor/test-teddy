@@ -25,11 +25,13 @@
     }
   }
   .clients-list {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 1.25rem;
     .loading {
+      grid-column: 1 / -1;
       width: 100%;
       height: 300px;
       display: flex;
@@ -41,11 +43,47 @@
       }
     }
     app-client-card {
-      margin-bottom: 1.25rem;
+      margin-bottom: 0;
       display: block;
       transition: 0.4s;
       &:hover {
         transform: translate(-1px, -1px);
+      }
+    }
+  }
+
+  .clients-footer {
+    margin-top: 2rem;
+
+    .pagination-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+      .pagination-pages {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        margin: 0 1rem;
+
+        .pagination-dots {
+          padding: 0.5rem;
+          color: rgba(0, 0, 0, 0.6);
+          font-weight: bold;
+        }
+
+        lib-teddy-button {
+          min-width: 2.5rem;
+        }
+      }
+
+      lib-teddy-button {
+        &:first-child,
+        &:last-child {
+          min-width: auto;
+          padding: 0 1rem;
+        }
       }
     }
   }

@@ -30,4 +30,41 @@
     (click)="handleOpenCreateForm()"
     >Criar cliente</lib-teddy-button
   >
+  <div class="pagination-content">
+    <!-- Botão de voltar -->
+    <lib-teddy-button
+      size="small"
+      apparence="outline"
+      [disabled]="currentPage === 1"
+      (click)="goToPreviousPage()"
+    >
+      ← Anterior
+    </lib-teddy-button>
+
+    <!-- Páginas -->
+    <div class="pagination-pages">
+      @for (page of getVisiblePages(); track page) { @if (page === 0) {
+      <span class="pagination-dots">...</span>
+      } @else {
+      <lib-teddy-button
+        size="small"
+        [apparence]="currentPage === page ? 'normal' : 'outline'"
+        [class.current-page]="currentPage === page"
+        (click)="goToPage(page)"
+      >
+        {{ page }}
+      </lib-teddy-button>
+      } }
+    </div>
+
+    <!-- Botão de avançar -->
+    <lib-teddy-button
+      size="small"
+      apparence="outline"
+      [disabled]="currentPage === totalPages"
+      (click)="goToNextPage()"
+    >
+      Próxima →
+    </lib-teddy-button>
+  </div>
 </div>

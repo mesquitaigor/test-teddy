@@ -1,13 +1,13 @@
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { Component, inject, OnInit } from '@angular/core';
-import { ClientFormComponent } from '@teddy/components';
+import { ClientModalComponent } from '@teddy/components';
 import { combineLatest, filter } from 'rxjs';
 import { UserService } from '@teddy/auth';
 
 import { AppHeaderComponent } from './components/app-header/app-header.component';
 
 @Component({
-  imports: [RouterModule, AppHeaderComponent, ClientFormComponent],
+  imports: [RouterModule, AppHeaderComponent, ClientModalComponent],
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.scss',
