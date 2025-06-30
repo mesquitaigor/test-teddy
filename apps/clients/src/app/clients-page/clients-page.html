@@ -1,0 +1,19 @@
+<div class="page-header">
+  <p><strong>16</strong> clientes encontrados:</p>
+  <div class="per-page-select">
+    <p>Clientes por página:</p>
+    <select name="per-page" class="form-select" aria-label="Default select example">
+      <option selected>10 por página</option>
+      <option value="20">20 por página</option>
+      <option value="50">50 por página</option>
+    </select>
+  </div>
+</div>
+<div class="clients-list">
+  @for (client of clients$ | async; track client.id) {
+    <app-client-card [client]="client"></app-client-card>
+  }
+</div>
+<div class="clients-footer">
+  <app-teddy-button [fill]="true" size="medium" apparence="outline">Criar cliente</app-teddy-button>
+</div>

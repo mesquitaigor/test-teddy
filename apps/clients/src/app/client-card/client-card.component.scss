@@ -1,0 +1,22 @@
+:host {
+  display: inline-block;
+  background-color: white;
+  padding: 0.9375rem 1rem;
+  border-radius: 4px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  width: 285px;
+  text-align: center;
+  > p {
+    margin-bottom: 10px;
+    font-size: 0.875rem;
+    &.client-name {
+      font-size: 1rem;
+    }
+  }
+  .actions {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
