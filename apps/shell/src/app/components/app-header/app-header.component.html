@@ -3,8 +3,20 @@
   <img class="logo" src="LogoTeddy.png" alt="Teddy Logo" />
 </div>
 <div class="navigation-menu">
-  <div class="item current"><a>Clientes</a></div>
-  <div class="item"><a>Clientes selecionados</a></div>
+  <div
+    class="item"
+    [class.current]="currentRoute == '/clients'"
+    routerLink="/clients"
+  >
+    <a>Clientes</a>
+  </div>
+  <div
+    class="item"
+    [class.current]="currentRoute == '/selected-clients'"
+    routerLink="/selected-clients"
+  >
+    <a>Clientes selecionados</a>
+  </div>
   <div class="item">
     <a
       tabindex="0"
