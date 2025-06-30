@@ -1,3 +1,3 @@
 export * from './lib/teddy-button/teddy-button.component';
-export * from './lib/client-form/client-form.component';
-export * from './lib/client-form/client-form.service';
+export * from './lib/client-form/client-modal.component';
+export * from './lib/client-form/client-modal.service';
