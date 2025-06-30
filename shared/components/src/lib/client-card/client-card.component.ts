@@ -1,7 +1,6 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { TeddyButtonComponent } from '@teddy/components';
 import { ClientModalService } from '@teddy/components';
-import { ClientsService } from '@teddy/domains';
 import { CommonModule } from '@angular/common';
 import { Client } from '@teddy/domains';
 

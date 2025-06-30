@@ -1,11 +1,10 @@
 import { ClientModalService, TeddyButtonComponent } from '@teddy/components';
 import { Component, inject, OnInit } from '@angular/core';
+import { ClientCardComponent } from '@teddy/components';
 import { ClientsService } from '@teddy/domains';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { finalize } from 'rxjs';
-
-import { ClientCardComponent } from '../client-card/client-card.component';
 
 @Component({
   selector: 'app-clients-page',
