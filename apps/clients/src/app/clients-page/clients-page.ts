@@ -30,18 +30,18 @@ export class ClientsPage implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.loadClients(true);
+    this.handleLoadClient(true);
   }
 
   handleOpenCreateForm(): void {
     this.clientFormService.open({
       onClose: () => {
-        this.loadClients();
+        this.handleLoadClient();
       },
     });
   }
 
-  loadClients(displayLoad = false): void {
+  handleLoadClient(displayLoad = false): void {
     if (displayLoad) {
       this.loading = true;
     }
@@ -58,7 +58,7 @@ export class ClientsPage implements OnInit {
   goToPage(page: number): void {
     if (page >= 1 && page <= this.totalPages) {
       this.currentPage = page;
-      this.loadClients();
+      this.handleLoadClient();
     }
   }
 

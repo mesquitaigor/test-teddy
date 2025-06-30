@@ -7,7 +7,7 @@
       class="form-select"
       aria-label="Default select example"
       [(ngModel)]="itemsPerPage"
-      (change)="loadClients()"
+      (change)="handleLoadClient()"
     >
       <option value="4">4 por página</option>
       <option value="8">8 por página</option>
@@ -18,7 +18,10 @@
 </div>
 <div class="clients-list">
   @if(!loading){ @for (client of clients$ | async; track client.id) {
-  <app-client-card [client]="client"></app-client-card>
+  <app-client-card
+    [client]="client"
+    (reloadData)="handleLoadClient()"
+  ></app-client-card>
   } } @else {
   <div class="loading">
     <p>Carregando clientes...</p>

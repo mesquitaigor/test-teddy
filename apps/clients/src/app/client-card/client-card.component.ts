@@ -14,7 +14,6 @@ import { Client } from '@teddy/domains';
 export class ClientCardComponent {
   @Input({ required: true }) client!: Client;
   @Output() reloadData = new EventEmitter<void>();
-  private readonly clientsService = inject(ClientsService);
   private readonly clientFormService = inject(ClientModalService);
   handleEditClient(): void {
     this.openClientModal('edit');
