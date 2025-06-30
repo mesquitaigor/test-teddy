@@ -7,5 +7,11 @@
     placeholder="Digite seu nome"
     type="text"
   />
-  <app-teddy-button size="large" [fill]="true" [disabled]="user.length === 0" (click)="handleEntry()">Entrar</app-teddy-button>
+  <lib-teddy-button
+    size="large"
+    [fill]="true"
+    [disabled]="user.length === 0"
+    (click)="handleEntry()"
+    >Entrar</lib-teddy-button
+  >
 </div>
