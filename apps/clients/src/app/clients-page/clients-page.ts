@@ -1,6 +1,9 @@
-import { ClientModalService, TeddyButtonComponent } from '@teddy/components';
+import {
+  ClientModalService,
+  ClientsListComponent,
+  TeddyButtonComponent,
+} from '@teddy/components';
 import { Component, inject, OnInit } from '@angular/core';
-import { ClientCardComponent } from '@teddy/components';
 import { ClientsService } from '@teddy/domains';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -11,7 +14,7 @@ import { finalize } from 'rxjs';
   imports: [
     CommonModule,
     FormsModule,
-    ClientCardComponent,
+    ClientsListComponent,
     TeddyButtonComponent,
   ],
   templateUrl: './clients-page.html',
