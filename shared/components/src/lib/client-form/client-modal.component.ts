@@ -5,14 +5,14 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ClientsService } from 'apps/clients/src/app/services/clients.service';
 import { maskitoNumberOptionsGenerator } from '@maskito/kit';
 import { TeddyButtonComponent } from '@teddy/components';
-import Client from 'apps/clients/src/app/models/Client';
-import { ClientFormService } from '@teddy/components';
+import { ClientModalService } from '@teddy/components';
 import { MaskitoDirective } from '@maskito/angular';
 import { Component, inject } from '@angular/core';
+import { ClientsService } from '@teddy/domains';
 import { CommonModule } from '@angular/common';
+import { Client } from '@teddy/domains';
 import { finalize } from 'rxjs';
 
 @Component({
@@ -24,20 +24,19 @@ import { finalize } from 'rxjs';
     MaskitoDirective,
     ReactiveFormsModule,
   ],
-  templateUrl: './client-form.component.html',
-  styleUrl: './client-form.component.scss',
+  templateUrl: './client-modal.component.html',
+  styleUrl: './client-modal.component.scss',
 })
-export class ClientFormComponent {
+export class ClientModalComponent {
   private readonly clientService = inject(ClientsService);
-  private readonly clientFormService = inject(ClientFormService);
-  readonly modalData$ = this.clientFormService.openState$;
+  private readonly clientModalService = inject(ClientModalService);
   readonly control = new FormGroup({
     salaryInput: new FormControl('', Validators.required),
     name: new FormControl('', Validators.required),
     companyValuationInput: new FormControl('', Validators.required),
   });
-
-  creating = false;
+  title = 'Criar Cliente';
+  executing = false;
   moneyMask = maskitoNumberOptionsGenerator({
     decimalSeparator: ',',
     thousandSeparator: '.',
@@ -45,35 +44,50 @@ export class ClientFormComponent {
     precision: 2,
     prefix: 'R$ ',
   });
+  modalData = this.clientModalService.openState$.getValue();
   ngOnInit(): void {
-    this.modalData$.subscribe((state) => {
-      if (state.stt && state.data) {
-        this.creating = false;
-        this.control.get('name')?.setValue(state.data.name);
-        this.control.get('salaryInput')?.setValue(
-          `R$ ${state.data.salary
-            .toFixed(2)
-            .replace('.', ',')
-            .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`
-        );
-        this.control.get('companyValuationInput')?.setValue(
-          `R$ ${state.data.companyValuation
-            .toFixed(2)
-            .replace('.', ',')
-            .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`
-        );
+    this.clientModalService.openState$.subscribe((state) => {
+      this.modalData = state;
+      if (state.stt) {
+        if (state.data) {
+          this.executing = false;
+          this.control.get('name')?.setValue(state.data.name);
+          this.control.get('salaryInput')?.setValue(
+            `R$ ${state.data.salary
+              .toFixed(2)
+              .replace('.', ',')
+              .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`
+          );
+          this.control.get('companyValuationInput')?.setValue(
+            `R$ ${state.data.companyValuation
+              .toFixed(2)
+              .replace('.', ',')
+              .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`
+          );
+        }
+        switch (state.action) {
+          case 'edit':
+            this.title = 'Editar Cliente';
+            break;
+          case 'delete':
+            this.title = 'Deletar Cliente';
+            break;
+          default:
+            this.title = 'Criar Cliente';
+            break;
+        }
       }
     });
   }
   handleClose(): void {
     this.control.reset();
-    this.creating = false;
+    this.executing = false;
     this.closeModal();
   }
   handleSubmit(): void {
-    if (this.control.valid && !this.creating) {
-      this.creating = true;
-      if (this.modalData$.getValue().data?.id) {
+    if (this.control.valid && !this.executing) {
+      this.executing = true;
+      if (this.modalData.data?.id) {
         this.updateClient();
       } else {
         this.createClient();
@@ -91,13 +105,12 @@ export class ClientFormComponent {
       })
       .pipe(
         finalize(() => {
-          this.creating = false;
+          this.executing = false;
         })
       )
       .subscribe({
         next: () => {
           this.control.reset();
-          this.clientService.load();
           this.closeModal();
         },
         error: (error) => {
@@ -106,15 +119,14 @@ export class ClientFormComponent {
       });
   }
   private closeModal(): void {
-    const modalData = this.modalData$.getValue();
-    if (modalData.onClose) {
-      modalData.onClose();
+    if (this.modalData.onClose) {
+      this.modalData.onClose();
     }
-    this.clientFormService.close();
+    this.clientModalService.close();
   }
   private updateClient(): void {
     const client = new Client(
-      this.modalData$.getValue().data?.id!,
+      this.modalData.data?.id!,
       this.control.get('name')?.value!,
       this.getClientSalaryInputValue(),
       this.getClientCompanyValuationInputValue()
@@ -123,13 +135,12 @@ export class ClientFormComponent {
       .update(client)
       .pipe(
         finalize(() => {
-          this.creating = false;
+          this.executing = false;
         })
       )
       .subscribe({
         next: () => {
           this.control.reset();
-          this.clientService.load();
           this.closeModal();
         },
         error: (error) => {
@@ -148,5 +159,27 @@ export class ClientFormComponent {
     return parseFloat(
       salary.replace('R$ ', '').replace('.', '').replace(',', '.')
     );
+  }
+  handleDeleteClient(): void {
+    const clientId = this.modalData.data?.id;
+    this.executing = true;
+    if (clientId) {
+      this.clientService
+        .delete(clientId)
+        .pipe(
+          finalize(() => {
+            this.executing = false;
+          })
+        )
+        .subscribe({
+          next: () => {
+            this.control.reset();
+            this.closeModal();
+          },
+          error: (error) => {
+            console.error('Error deleting client:', error);
+          },
+        });
+    }
   }
 }

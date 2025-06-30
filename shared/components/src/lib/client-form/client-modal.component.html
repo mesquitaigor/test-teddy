@@ -1,12 +1,13 @@
-@if((modalData$ | async)?.stt) {
+@if(modalData.stt) {
 <div class="modal-background">
   <div class="modal-content">
     <div class="modal-header">
-      <h2>Client Form</h2>
+      <h2>{{ title }}</h2>
       <lib-teddy-button apparence="icon" (click)="handleClose()"
         ><img src="close.png" alt="Fechar"
       /></lib-teddy-button>
     </div>
+    @if(modalData.action !== 'delete'){
     <form [formGroup]="control">
       <input type="text" placeholder="Digite o nome:" formControlName="name" />
       <input
@@ -22,13 +23,34 @@
         [maskito]="moneyMask"
       />
       <lib-teddy-button
-        [disabled]="creating || !control.valid"
+        [disabled]="executing || !control.valid"
         [fill]="true"
         size="small"
         (click)="handleSubmit()"
-        >{{ !creating ? 'Salvar' : 'Salvando...' }}</lib-teddy-button
       >
+        @if(modalData.action === 'edit') {
+        {{ !executing ? 'Editar' : 'Editando...' }}
+        }@else {
+        {{ !executing ? 'Criar' : 'Criando...' }}
+
+        }
+      </lib-teddy-button>
     </form>
+    }@else {
+    <div class="delete-content">
+      <p>
+        Você está prestes a excluir o cliente:
+        <strong>{{ modalData.data?.name }}</strong>
+      </p>
+      <lib-teddy-button
+        [disabled]="executing"
+        [fill]="true"
+        size="small"
+        (click)="handleDeleteClient()"
+        >{{ !executing ? 'Excluir' : 'Excluindo...' }}</lib-teddy-button
+      >
+    </div>
+    }
   </div>
 </div>
 
