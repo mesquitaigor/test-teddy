@@ -1,5 +1,6 @@
+import { identificationGuard } from '@teddy/auth';
 import { Route } from '@angular/router';
-import { identificationGuard } from './shared/guards/identification-guard';
+
 
 export const appRoutes: Route[] = [
   {

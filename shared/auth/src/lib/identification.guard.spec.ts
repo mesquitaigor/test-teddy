@@ -1,9 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { CanActivateFn } from '@angular/router';
 
-import { identificationGuard } from './identification-guard';
+import { identificationGuard } from './identification.guard';
 
-describe('identificationGuard', () => {
+
+describe('identificationGuardGuard', () => {
   const executeGuard: CanActivateFn = (...guardParameters) => 
       TestBed.runInInjectionContext(() => identificationGuard(...guardParameters));
 
