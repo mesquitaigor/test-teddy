@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@teddy/auth": ["shared/auth/src/index.ts"],
+      "@teddy/components": ["shared/components/src/index.ts"],
       "clients/Routes": ["apps/clients/src/app/remote-entry/entry.routes.ts"],
       "user_identification/Routes": [
         "apps/user_identification/src/app/remote-entry/entry.routes.ts"
