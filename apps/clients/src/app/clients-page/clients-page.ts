@@ -6,7 +6,7 @@ import { ClientCardComponent } from '../client-card/client-card.component';
 import { ClientsService } from '../services/clients.service';
 
 
-@Component({
+@Component({ 
   selector: 'app-clients-page',
   imports: [CommonModule, ClientCardComponent, TeddyButtonComponent],
   templateUrl: './clients-page.html',
