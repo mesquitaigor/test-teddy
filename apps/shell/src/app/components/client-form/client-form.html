@@ -6,10 +6,20 @@
         ><img src="close.png" alt="Fechar"
       /></lib-teddy-button>
     </div>
-    <form>
+    <form [formGroup]="control">
       <input type="text" placeholder="Digite o nome:" />
-      <input type="text" placeholder="Digite o salário:" />
-      <input type="text" placeholder="Digite o valor da empresa:" />
+      <input
+        type="text"
+        placeholder="Digite o salário:"
+        formControlName="salaryInput"
+        [maskito]="moneyMask"
+      />
+      <input
+        type="text"
+        placeholder="Digite o valor da empresa:"
+        formControlName="companyValuationInput"
+        [maskito]="moneyMask"
+      />
       <lib-teddy-button [fill]="true" size="small">Salvar</lib-teddy-button>
     </form>
   </div>

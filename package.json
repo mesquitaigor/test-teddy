@@ -12,9 +12,12 @@
     "@angular/platform-browser": "~20.0.0",
     "@angular/platform-browser-dynamic": "~20.0.0",
     "@angular/router": "~20.0.0",
+    "@maskito/angular": "^3.9.1",
+    "@maskito/core": "^3.9.1",
+    "@maskito/kit": "^3.9.1",
+    "@nx/angular": "21.2.1",
     "rxjs": "~7.8.0",
-    "zone.js": "~0.15.0",
-    "@nx/angular": "21.2.1"
+    "zone.js": "~0.15.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~20.0.0",
