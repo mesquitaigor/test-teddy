@@ -1,3 +1,4 @@
+import { TeddyButtonComponent } from '@teddy/components';
 import { Component, inject, Input } from '@angular/core';
 import { ClientFormService } from '@teddy/components';
 import { CommonModule } from '@angular/common';
