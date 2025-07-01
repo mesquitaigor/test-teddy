@@ -6,7 +6,7 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "prepare": "husky"
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
@@ -68,5 +68,9 @@
   },
   "nx": {
     "includedScripts": []
+  },
+  "lint-staged": {
+    "*.ts": "eslint --cache --fix",
+    "*.{ts,css,html}": "prettier --write"
   }
 }
