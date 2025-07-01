@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
-import { UserIdentificationComponent } from './user-identification.component';
+import { UserIdentificationComponent } from './../user-identification/user-identification.component';
 
 
 @Component({

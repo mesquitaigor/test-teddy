@@ -1,19 +1,17 @@
-import {
-  FormControl,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators, } from '@angular/forms';
 import { maskitoNumberOptionsGenerator } from '@maskito/kit';
-import { TeddyButtonComponent } from '@teddy/components';
-import { ClientModalService } from '@teddy/components';
 import { MaskitoDirective } from '@maskito/angular';
+// import { maskitoNumberOptionsGenerator } from '@maskito/kit';
+// import { MaskitoDirective } from '@maskito/angular';
 import { Component, inject } from '@angular/core';
 import { ClientsService } from '@teddy/domains';
 import { CommonModule } from '@angular/common';
 import { Client } from '@teddy/domains';
 import { finalize } from 'rxjs';
+
+import { TeddyButtonComponent } from '../teddy-button/teddy-button.component';
+import { ClientModalService } from './client-modal.service';
+
 
 @Component({
   selector: 'app-client-form',

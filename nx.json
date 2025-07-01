@@ -18,7 +18,7 @@
     ],
     "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
-  "nxCloudId": "68614c9ee730de1b5123a540",
+  "nxCloudId": "68633aee987037155cc3a9d9",
   "targetDefaults": {
     "@angular-devkit/build-angular:browser": {
       "cache": true,
@@ -90,5 +90,6 @@
     "@nx/angular:component": {
       "style": "css"
     }
-  }
+  },
+  "defaultProject": "teddy"
 }

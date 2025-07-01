@@ -1,24 +1,20 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
+    "moduleResolution": "bundler",
+    "emitDecoratorMetadata": false,
+    "target": "es2022",
+    "module": "preserve",
     "lib": ["es2020", "dom"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
       "@teddy/auth": ["shared/auth/src/index.ts"],
       "@teddy/components": ["shared/components/src/index.ts"],
       "@teddy/domains": ["shared/domains/src/index.ts"],
       "clients/Routes": ["apps/clients/src/app/remote-entry/entry.routes.ts"],
+      "selected_clients/Routes": [
+        "apps/selected_clients/src/app/remote-entry/entry.routes.ts"
+      ],
       "user_identification/Routes": [
         "apps/user_identification/src/app/remote-entry/entry.routes.ts"
       ]
