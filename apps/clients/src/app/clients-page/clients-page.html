@@ -16,18 +16,7 @@
     </select>
   </div>
 </div>
-<div class="clients-list">
-  @if(!loading){ @for (client of clients$ | async; track client.id) {
-  <app-client-card
-    [client]="client"
-    (reloadData)="handleLoadClient()"
-  ></app-client-card>
-  } } @else {
-  <div class="loading">
-    <p>Carregando clientes...</p>
-  </div>
-  }
-</div>
+<lib-clients-list [clients]="(clients$ | async) || []" [loading]="loading" (reloadData)="handleLoadClient()"></lib-clients-list>
 <div class="clients-footer">
   <lib-teddy-button
     [fill]="true"
