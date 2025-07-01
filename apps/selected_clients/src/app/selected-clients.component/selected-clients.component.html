@@ -1,0 +1,6 @@
+<lib-clients-list
+  [clients]="(selectedClients$ | async) || []"
+  [loading]="false"
+  emptyText="Nenhum cliente selecionado"
+  (reloadData)="handleLoadClient()"
+></lib-clients-list>

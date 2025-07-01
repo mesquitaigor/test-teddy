@@ -1,8 +1,13 @@
-@if(!loading){ @for (client of clients; track client.id) {
+@if(!loading){ @if(clients.length > 0) { @for (client of clients; track
+client.id) {
 <lib-client-card
   [client]="client"
   (reloadData)="reloadData.emit()"
 ></lib-client-card>
+} } @else {
+<div class="loading">
+  <p>{{ emptyText }}</p>
+</div>
 } } @else {
 <div class="loading">
   <p>Carregando clientes...</p>

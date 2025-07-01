@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
-import { NxWelcome } from './nx-welcome';
+import { SelectedClientsComponent } from '../selected-clients.component/selected-clients.component';
 
 @Component({
-  imports: [CommonModule, NxWelcome],
+  imports: [CommonModule, SelectedClientsComponent],
   selector: 'app-selected-clients-entry',
-  template: `<app-nx-welcome></app-nx-welcome>`,
+  template: `<app-selected-clients></app-selected-clients>`,
 })
 export class RemoteEntry {}

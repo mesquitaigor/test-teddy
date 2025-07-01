@@ -1,4 +1,4 @@
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -11,6 +11,9 @@ import { Client } from './Client';
 export class ClientsService {
   private readonly httpClient = inject(HttpClient);
   readonly clients$ = new BehaviorSubject<Client[]>([]);
+  readonly selectedClients$ = this.clients$.pipe(
+    map((clients) => clients.filter((client) => client.selected))
+  );
   load(page: number, limit: number): Observable<ClientDataResponse> {
     return this.httpClient
       .get<ClientDataResponse>(

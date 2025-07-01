@@ -13,5 +13,6 @@ import { ClientCardComponent } from '../client-card/client-card.component';
 export class ClientsListComponent {
   @Input({ required: true }) clients: Client[] = [];
   @Input() loading = false;
+  @Input() emptyText = 'Nenhum cliente encontrado';
   @Output() reloadData = new EventEmitter<void>();
 }
