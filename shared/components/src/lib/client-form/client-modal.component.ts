@@ -117,6 +117,7 @@ export class ClientModalComponent {
       });
   }
   private closeModal(): void {
+    alert('oi')
     if (this.modalData.onClose) {
       this.modalData.onClose();
     }

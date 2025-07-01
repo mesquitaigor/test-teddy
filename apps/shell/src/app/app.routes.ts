@@ -4,7 +4,7 @@ import { Route } from '@angular/router';
 
 export const appRoutes: Route[] = [
   {
-    path: 'selected_clients',
+    path: 'selected-clients',
     loadChildren: () =>
       import('selected_clients/Routes').then((m) => m!.remoteRoutes),
     canActivate: [userIsIdentifiedGuard()]

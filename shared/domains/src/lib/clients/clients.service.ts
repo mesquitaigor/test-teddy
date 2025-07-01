@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { ClientDataResponse, CreateClientData } from './ClientData';
 import { Client } from './Client';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -50,9 +51,10 @@ export class ClientsService {
       }
     );
   }
-  delete(clientId: number): Observable<void> {
-    return this.httpClient.delete<void>(
-      `https://boasorte.teddybackoffice.com.br/users/${clientId}`
+  delete(clientId: number): Observable<string> {
+    return this.httpClient.delete(
+      `https://boasorte.teddybackoffice.com.br/users/${clientId}`,
+      { responseType: 'text' }
     );
   }
 }
