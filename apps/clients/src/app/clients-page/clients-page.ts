@@ -1,11 +1,10 @@
+import { ClientModalService, TeddyButtonComponent } from '@teddy/components';
 import { Component, inject, OnInit } from '@angular/core';
-import { TeddyButtonComponent } from '@teddy/components';
+import { ClientCardComponent } from '@teddy/components';
 import { ClientsService } from '@teddy/domains';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { finalize } from 'rxjs';
-
-import { ClientCardComponent } from '../client-card/client-card.component';
 
 
 @Component({
@@ -21,7 +20,7 @@ import { ClientCardComponent } from '../client-card/client-card.component';
 })
 export class ClientsPage {
   private readonly clientsService = inject(ClientsService);
-  //private readonly clientFormService = inject(ClientModalService);
+  private readonly clientModalService = inject(ClientModalService);
   clients$ = this.clientsService.clients$;
   loading = false;
 
@@ -35,11 +34,11 @@ export class ClientsPage {
   }
 
   handleOpenCreateForm(): void {
-    // this.clientFormService.open({
-    //   onClose: () => {
-    //     this.handleLoadClient();
-    //   },
-    // });
+    this.clientModalService.open({
+      onClose: () => {
+        this.handleLoadClient();
+      },
+    });
   }
 
   handleLoadClient(displayLoad = false): void {
