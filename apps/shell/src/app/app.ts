@@ -6,7 +6,6 @@ import { UserService } from '@teddy/auth';
 
 import { AppHeaderComponent } from './components/app-header/app-header.component';
 
-
 @Component({
   imports: [RouterModule, AppHeaderComponent, ClientModalComponent],
   selector: 'app-root',

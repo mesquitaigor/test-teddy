@@ -16,7 +16,11 @@
     </select>
   </div>
 </div>
-<lib-clients-list [clients]="(clients$ | async) || []" [loading]="loading" (reloadData)="handleLoadClient()"></lib-clients-list>
+<lib-clients-list
+  [clients]="(clients$ | async) || []"
+  [loading]="loading"
+  (reloadData)="handleLoadClient()"
+></lib-clients-list>
 <div class="clients-footer">
   <lib-teddy-button
     [fill]="true"

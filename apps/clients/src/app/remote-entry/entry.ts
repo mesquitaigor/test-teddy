@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 
 import { ClientsPage } from '../clients-page/clients-page';
 
-
 @Component({
   imports: [CommonModule, ClientsPage],
   selector: 'app-clients-entry',

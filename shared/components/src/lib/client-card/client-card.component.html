@@ -11,7 +11,9 @@
   }}
 </p>
 <div class="actions">
-  <lib-teddy-button apparence="icon" (click)="client.selected = !client.selected"
+  <lib-teddy-button
+    apparence="icon"
+    (click)="client.selected = !client.selected"
     ><img src="plus.png" alt="Selecionar"
   /></lib-teddy-button>
   <lib-teddy-button apparence="icon" (click)="handleEditClient()"
@@ -20,5 +22,5 @@
   <lib-teddy-button apparence="icon" (click)="handleDeleteClient()"
     ><img src="trash.png" alt="Excluir"
   /></lib-teddy-button>
-  {{client.selected}}
+  {{ client.selected }}
 </div>

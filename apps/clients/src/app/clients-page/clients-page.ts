@@ -1,10 +1,13 @@
-import { ClientModalService, ClientsListComponent, TeddyButtonComponent } from '@teddy/components';
-import { Component, inject } from '@angular/core';
+import {
+  ClientModalService,
+  ClientsListComponent,
+  TeddyButtonComponent,
+} from '@teddy/components';
+import { Component, inject, OnInit } from '@angular/core';
 import { ClientsService } from '@teddy/domains';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { finalize } from 'rxjs';
-
 
 @Component({
   selector: 'app-clients-page',
@@ -12,12 +15,12 @@ import { finalize } from 'rxjs';
     CommonModule,
     FormsModule,
     TeddyButtonComponent,
-    ClientsListComponent
+    ClientsListComponent,
   ],
   templateUrl: './clients-page.html',
   styleUrl: './clients-page.scss',
 })
-export class ClientsPage {
+export class ClientsPage implements OnInit {
   private readonly clientsService = inject(ClientsService);
   private readonly clientModalService = inject(ClientModalService);
   clients$ = this.clientsService.clients$;

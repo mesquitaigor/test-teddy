@@ -70,7 +70,7 @@
     "includedScripts": []
   },
   "lint-staged": {
-    "*.ts": "eslint --cache --fix",
+    "*.ts": "nx affected -t lint",
     "*.{ts,css,html}": "prettier --write"
   }
 }

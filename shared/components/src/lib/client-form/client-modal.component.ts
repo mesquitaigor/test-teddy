@@ -1,10 +1,14 @@
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators, } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { ClientsService, CreateClientData } from '@teddy/domains';
 import { maskitoNumberOptionsGenerator } from '@maskito/kit';
+import { Component, inject, OnInit } from '@angular/core';
 import { MaskitoDirective } from '@maskito/angular';
-// import { maskitoNumberOptionsGenerator } from '@maskito/kit';
-// import { MaskitoDirective } from '@maskito/angular';
-import { Component, inject } from '@angular/core';
-import { ClientsService } from '@teddy/domains';
 import { CommonModule } from '@angular/common';
 import { Client } from '@teddy/domains';
 import { finalize } from 'rxjs';
@@ -12,9 +16,8 @@ import { finalize } from 'rxjs';
 import { TeddyButtonComponent } from '../teddy-button/teddy-button.component';
 import { ClientModalService } from './client-modal.service';
 
-
 @Component({
-  selector: 'app-client-form',
+  selector: 'lib-client-form',
   imports: [
     CommonModule,
     FormsModule,
@@ -25,7 +28,7 @@ import { ClientModalService } from './client-modal.service';
   templateUrl: './client-modal.component.html',
   styleUrl: './client-modal.component.scss',
 })
-export class ClientModalComponent {
+export class ClientModalComponent implements OnInit {
   private readonly clientService = inject(ClientsService);
   private readonly clientModalService = inject(ClientModalService);
   readonly control = new FormGroup({
@@ -95,69 +98,80 @@ export class ClientModalComponent {
     }
   }
   private createClient(): void {
-    this.clientService
-      .create({
-        name: this.control.get('name')?.value!,
-        salary: this.getClientSalaryInputValue(),
-        companyValuation: this.getClientCompanyValuationInputValue(),
-      })
-      .pipe(
-        finalize(() => {
-          this.executing = false;
-        })
-      )
-      .subscribe({
-        next: () => {
-          this.control.reset();
-          this.closeModal();
-        },
-        error: (error) => {
-          console.error('Error creating client:', error);
-        },
-      });
+    const payload = {
+      name: this.control.get('name')?.value,
+      salary: this.getClientSalaryInputValue(),
+      companyValuation: this.getClientCompanyValuationInputValue(),
+    };
+    if (payload.name && payload.salary && payload.companyValuation) {
+      this.clientService
+        .create(payload as CreateClientData)
+        .pipe(
+          finalize(() => {
+            this.executing = false;
+          })
+        )
+        .subscribe({
+          next: () => {
+            this.control.reset();
+            this.closeModal();
+          },
+          error: (error) => {
+            console.error('Error creating client:', error);
+          },
+        });
+    }
   }
   private closeModal(): void {
-    alert('oi')
     if (this.modalData.onClose) {
       this.modalData.onClose();
     }
     this.clientModalService.close();
   }
   private updateClient(): void {
-    const client = new Client(
-      this.modalData.data?.id!,
-      this.control.get('name')?.value!,
-      this.getClientSalaryInputValue(),
-      this.getClientCompanyValuationInputValue()
-    );
-    this.clientService
-      .update(client)
-      .pipe(
-        finalize(() => {
-          this.executing = false;
-        })
-      )
-      .subscribe({
-        next: () => {
-          this.control.reset();
-          this.closeModal();
-        },
-        error: (error) => {
-          console.error('Error creating client:', error);
-        },
-      });
+    const name = this.control.get('name')?.value;
+    const salary = this.getClientSalaryInputValue();
+    const companyValuation = this.getClientCompanyValuationInputValue();
+    if (name && this.modalData.data?.id && salary && companyValuation) {
+      const client = new Client(
+        this.modalData.data?.id,
+        name,
+        salary,
+        companyValuation
+      );
+      this.clientService
+        .update(client)
+        .pipe(
+          finalize(() => {
+            this.executing = false;
+          })
+        )
+        .subscribe({
+          next: () => {
+            this.control.reset();
+            this.closeModal();
+          },
+          error: (error) => {
+            console.error('Error creating client:', error);
+          },
+        });
+    }
   }
-  private getClientCompanyValuationInputValue(): number {
-    const companyValuation = this.control.get('companyValuationInput')?.value!;
-    return parseFloat(
-      companyValuation.replace('R$ ', '').replace('.', '').replace(',', '.')
-    );
+  private getClientCompanyValuationInputValue(): number | void {
+    const companyValuation = this.control.get('companyValuationInput')?.value;
+    if (companyValuation) {
+      return parseFloat(
+        companyValuation.replace('R$ ', '').replace('.', '').replace(',', '.')
+      );
+    }
   }
-  private getClientSalaryInputValue(): number {
-    const salary = this.control.get('salaryInput')?.value!;
-    return parseFloat(
-      salary.replace('R$ ', '').replace('.', '').replace(',', '.')
-    );
+  private getClientSalaryInputValue(): number | void {
+    const salary = this.control.get('salaryInput')?.value;
+    if (salary) {
+      return parseFloat(
+        salary.replace('R$ ', '').replace('.', '').replace(',', '.')
+      );
+    }
   }
   handleDeleteClient(): void {
     const clientId = this.modalData.data?.id;

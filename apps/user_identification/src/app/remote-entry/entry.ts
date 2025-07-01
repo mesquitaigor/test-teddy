@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 
 import { UserIdentificationComponent } from './../user-identification/user-identification.component';
 
-
 @Component({
   imports: [CommonModule, UserIdentificationComponent],
   selector: 'app-user-identification-entry',

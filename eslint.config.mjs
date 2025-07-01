@@ -1,5 +1,7 @@
-import baseConfig from './eslint.base.config.mjs';
 import nx from '@nx/eslint-plugin';
+
+import baseConfig from './eslint.base.config.mjs';
+
 
 export default [
   ...baseConfig,
@@ -41,11 +43,15 @@ export default [
           style: 'kebab-case',
         },
       ],
+      '@typescript-eslint/no-unused-vars': ['error'],
     },
   },
   {
     files: ['**/*.html'],
     // Override or add rules here
-    rules: {},
+    rules: {
+      '@angular-eslint/template/click-events-have-key-events': 'off',
+      '@angular-eslint/template/interactive-supports-focus': 'off',
+    },
   },
 ];

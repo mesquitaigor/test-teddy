@@ -3,7 +3,6 @@ import { TestBed } from '@angular/core/testing';
 import { NxWelcome } from './nx-welcome';
 import { App } from './app';
 
-
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({

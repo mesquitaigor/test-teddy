@@ -1,9 +1,8 @@
 import { NavigationEnd, Router } from '@angular/router';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserService } from '@teddy/auth';
 import { filter } from 'rxjs';
-
 
 @Component({
   selector: 'app-header',
@@ -11,17 +10,16 @@ import { filter } from 'rxjs';
   templateUrl: './app-header.component.html',
   styleUrl: './app-header.component.scss',
 })
-export class AppHeaderComponent {
+export class AppHeaderComponent implements OnInit {
   readonly router = inject(Router);
   private readonly userService = inject(UserService);
   userName$ = this.userService.user$;
-  currentRouter: string = '';
+  currentRouter = '';
   user = '';
-  ngOnInit(): void{
-    
+  ngOnInit(): void {
     this.currentRouter = this.router.url;
     this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
+      .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
         this.currentRouter = event.urlAfterRedirects;
       });

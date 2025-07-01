@@ -5,9 +5,8 @@ import { Client } from '@teddy/domains';
 import { TeddyButtonComponent } from '../teddy-button/teddy-button.component';
 import { ClientModalService } from '../client-form/client-modal.service';
 
-
 @Component({
-  selector: 'app-client-card',
+  selector: 'lib-client-card',
   imports: [TeddyButtonComponent, CommonModule],
   templateUrl: './client-card.component.html',
   styleUrl: './client-card.component.scss',

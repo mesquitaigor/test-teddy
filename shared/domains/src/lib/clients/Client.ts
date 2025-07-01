@@ -3,7 +3,7 @@ export class Client {
   name: string;
   salary: number;
   companyValuation: number;
-  selected = false
+  selected = false;
 
   constructor(id: number, name: string, salary: number, company: number) {
     this.id = id;

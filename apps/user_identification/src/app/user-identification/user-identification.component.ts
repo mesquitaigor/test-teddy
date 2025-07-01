@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 
 import { AutofocusDirective } from './autofocus.directive';
 
-
 @Component({
   selector: 'app-user-identification',
   imports: [

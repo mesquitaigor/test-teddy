@@ -3,8 +3,20 @@
   <img class="logo" src="LogoTeddy.png" alt="Teddy Logo" />
 </div>
 <div class="navigation-menu">
-  <div class="item" [class.current]="currentRouter == '/clients'" (click)="router.navigate(['/clients'])" ><a>Clientes</a></div>
-  <div class="item" [class.current]="currentRouter == '/selected-clients'" (click)="router.navigate(['/selected-clients'])"><a>Clientes selecionados</a></div>
+  <div
+    class="item"
+    [class.current]="currentRouter === '/clients'"
+    (click)="router.navigate(['/clients'])"
+  >
+    <a>Clientes</a>
+  </div>
+  <div
+    class="item"
+    [class.current]="currentRouter === '/selected-clients'"
+    (click)="router.navigate(['/selected-clients'])"
+  >
+    <a>Clientes selecionados</a>
+  </div>
   <div class="item">
     <a
       tabindex="0"

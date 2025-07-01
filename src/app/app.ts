@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 
 import { NxWelcome } from './nx-welcome';
 
-
 @Component({
   imports: [NxWelcome, RouterModule],
   selector: 'app-root',
