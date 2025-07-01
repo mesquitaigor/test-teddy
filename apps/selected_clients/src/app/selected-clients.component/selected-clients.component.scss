@@ -1,0 +1,43 @@
+h2{
+  margin-bottom: .625rem;
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+:host{
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  background-color: rgba(245, 245, 245, 1);
+  padding: 1.875rem 2.5rem;
+  box-sizing: border-box;
+  lib-teddy-button {
+    margin-top: 1.25rem;
+  }
+  @media (min-width: 576px) {
+    .page-header .per-page-select p {
+      display: flex;
+    }
+  }
+
+  @media (min-width: 768px) {
+    padding: 1.875rem 2.5rem;
+    .page-header {
+      > p {
+        font-size: 1.125rem;
+      }
+      .per-page-select p {
+        font-size: 1.125rem;
+      }
+    }
+  }
+
+  @media (min-width: 992px) {
+    padding: 1.875rem 5rem;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 1.875rem 7.5rem;
+  }
+}

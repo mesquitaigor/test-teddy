@@ -3,6 +3,7 @@ client.id) {
 <lib-client-card
   [client]="client"
   (reloadData)="reloadData.emit()"
+  [showActions]="!onlySelection"
 ></lib-client-card>
 } } @else {
 <div class="loading">

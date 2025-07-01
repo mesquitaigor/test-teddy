@@ -1,5 +1,5 @@
 <div class="page-header">
-  <p><strong>{{(clients$ | async)?.length}}</strong> clientes encontrados:</p>
+  <p><strong>{{(clients$ | async)?.length}}</strong> clientes<span> encontrados</span>:</p>
   <div class="per-page-select">
     <p>Clientes por página:</p>
     <select
@@ -29,13 +29,13 @@
     (click)="handleOpenCreateForm()"
     >Criar cliente</lib-teddy-button
   >
-  @if(totalPages > 1){
   <div class="pagination-content">
     <div class="pagination-pages">
       @for (page of getVisiblePages(); track page) { @if (page === 0) {
       <span class="pagination-dots">...</span>
       } @else {
       <lib-teddy-button
+        [disabled]="totalPages === 1"
         size="small"
         [apparence]="currentPage === page ? 'normal' : 'ghost'"
         [class.current-page]="currentPage === page"
@@ -46,5 +46,4 @@
       } }
     </div>
   </div>
-  }
 </div>

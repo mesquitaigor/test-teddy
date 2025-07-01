@@ -10,16 +10,22 @@
     client.companyValuation | currency : 'BRL' : 'symbol' : '1.2-2' : 'pt-BR'
   }}
 </p>
-<div class="actions">
+<div class="actions" [class.justify-right]="!showActions">
   <lib-teddy-button
     apparence="icon"
-    (click)="client.selected = !client.selected"
-    ><img src="plus.png" alt="Selecionar"
-  /></lib-teddy-button>
-  <lib-teddy-button apparence="icon" (click)="handleEditClient()"
-    ><img src="pencil.png" alt="Editar"
-  /></lib-teddy-button>
-  <lib-teddy-button apparence="icon" (click)="handleDeleteClient()"
-    ><img src="trash.png" alt="Excluir"
-  /></lib-teddy-button>
+    (click)="handleTest()"
+    >@if(!client.selected){
+      <img src="plus.png" alt="Selecionar"/>
+    } @else {
+      <img src="minus.png" alt="Descelecionar"/>
+    }
+  </lib-teddy-button>
+  @if(showActions){
+    <lib-teddy-button apparence="icon" (click)="handleEditClient()"
+      ><img src="pencil.png" alt="Editar"
+    /></lib-teddy-button>
+    <lib-teddy-button apparence="icon" (click)="handleDeleteClient()"
+      ><img src="trash.png" alt="Excluir"
+    /></lib-teddy-button>
+  }
 </div>

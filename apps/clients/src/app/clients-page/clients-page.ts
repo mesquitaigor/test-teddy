@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { finalize } from 'rxjs';
 
+
 @Component({
   selector: 'app-clients-page',
   imports: [CommonModule, FormsModule, TeddyButtonComponent, ClientsListComponent],
@@ -22,8 +23,7 @@ export class ClientsPage implements OnInit {
   itemsPerPage = 16;
 
   ngOnInit(): void {
-    this.loading = true;
-    this.handleLoadClient(true);
+    this.handleLoadClient(this.clientsService.clients$.getValue().length == 0);
   }
 
   handleOpenCreateForm(): void {
@@ -35,9 +35,7 @@ export class ClientsPage implements OnInit {
   }
 
   handleLoadClient(displayLoad = false): void {
-    if (displayLoad) {
-      this.loading = true;
-    }
+    this.loading = displayLoad;
     this.clientsService
       .load(this.currentPage, this.itemsPerPage)
       .pipe(finalize(() => (this.loading = false)))

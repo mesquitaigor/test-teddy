@@ -1,6 +1,10 @@
 <div class="left-content">
-  <img class="menu" src="menu.png" alt="Teddy Logoo" />
-  <img class="logo" src="LogoTeddy.png" alt="Teddy Logo" />
+  <lib-teddy-button apparence="icon" (click)="openMenu = !openMenu">
+    <img class="menu" src="menu.png" alt="Teddy Logoo" />
+  </lib-teddy-button>
+  <lib-teddy-button apparence="icon" (click)="router.navigate(['/'])">
+    <img class="logo" src="LogoTeddy.png" alt="Teddy Logo" />
+  </lib-teddy-button>
 </div>
 <div class="navigation-menu">
   <div
@@ -32,4 +36,35 @@
     Olá <strong>{{ userName$ | async }}</strong
     >!
   </p>
+</div>
+<div class="side-menu" [class.open]="openMenu">
+  <div class="side-menu-background" (click)="openMenu = false"></div>
+  <div class="side-menu-content">
+    <div class="side-menu-header">
+      <img class="logo" src="LogoTeddy.png" alt="Teddy Logo" />
+      <div class="side-menu-closer" (click)="openMenu = false">
+        <img src="back.svg" alt="back">
+      </div>
+    </div>
+    <div class="menu-itens-list">
+      <div class="menu-item" [class.selected]="currentRouter === '/'" (click)="handleRedirect('/')">
+        <lib-teddy-button apparence="icon">
+          <img class="menu" src="home-item.svg" alt="Teddy Logoo" />
+          <p>Home</p>
+        </lib-teddy-button>
+      </div>
+      <div class="menu-item" [class.selected]="currentRouter === '/clients'" (click)="handleRedirect('/clients')">
+        <lib-teddy-button apparence="icon">
+          <img class="menu" src="client-item.svg" alt="Teddy Logoo" />
+          <p>Clientes</p>
+        </lib-teddy-button>
+      </div>
+      <div class="menu-item" [class.selected]="currentRouter === '/selected-clients'" (click)="handleRedirect('/selected-clients')">
+        <lib-teddy-button apparence="icon">
+          <img class="menu" src="selected-client-item.svg" alt="Teddy Logo" />
+          <p>Clientes selecionados</p>
+        </lib-teddy-button>
+      </div>
+    </div>
+  </div>
 </div>

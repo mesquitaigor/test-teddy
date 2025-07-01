@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { ClientDataResponse, CreateClientData } from './ClientData';
 import { Client } from './Client';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -22,11 +23,32 @@ export class ClientsService {
       .pipe(
         tap((response: ClientDataResponse) => {
           const clients = response.clients.map(
-            (item) => new Client(item.id, item.name, item.salary, item.companyValuation),
+            (item) => {
+              const findedClient = this.clients$.getValue().find((c) => c.id === item.id);
+              const client = new Client(item.id, item.name, item.salary, item.companyValuation)
+              if (findedClient) {
+                client.selected = findedClient.selected;
+              } else {
+                client.selected = false;
+              }
+              return client;
+            },
           );
           this.clients$.next(clients);
         }),
       );
+  }
+  resetSelection(): void {
+    const currentClients = this.clients$.getValue();
+    const updatedClients = currentClients.map((c) => ({ ...c, selected: false }));
+    this.clients$.next(updatedClients);
+  }
+  changeClientSelection(client: Client): void {
+    const currentClients = this.clients$.getValue();
+    const updatedClients = currentClients.map((c) =>
+      c.id === client.id ? { ...c, selected: !c.selected } : c,
+    );
+    this.clients$.next(updatedClients);
   }
   create(client: CreateClientData): Observable<void> {
     return this.httpClient.post<void>('https://boasorte.teddybackoffice.com.br/users', {

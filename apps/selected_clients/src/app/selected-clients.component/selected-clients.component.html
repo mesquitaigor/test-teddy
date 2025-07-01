@@ -1,6 +1,13 @@
+<h2>Clientes selecionados:</h2>
 <lib-clients-list
   [clients]="(selectedClients$ | async) || []"
   [loading]="false"
   emptyText="Nenhum cliente selecionado"
-  (reloadData)="handleLoadClient()"
+  [onlySelection]="true"
 ></lib-clients-list>
+<lib-teddy-button
+  [fill]="true"
+  size="small"
+  apparence="outline"
+  (click)="handleCleanClients()"
+>Limpar clientes selecionados</lib-teddy-button>

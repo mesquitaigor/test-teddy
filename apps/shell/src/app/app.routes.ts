@@ -1,6 +1,7 @@
 import { userIsIdentifiedGuard } from '@teddy/auth';
 import { Route } from '@angular/router';
 
+
 export const appRoutes: Route[] = [
   {
     path: 'selected-clients',
@@ -15,6 +16,5 @@ export const appRoutes: Route[] = [
   {
     path: '',
     loadChildren: () => import('user_identification/Routes').then((m) => m.remoteRoutes),
-    canActivate: [userIsIdentifiedGuard(false)],
   },
 ];

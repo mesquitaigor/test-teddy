@@ -1,9 +1,10 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Client, ClientsService } from '@teddy/domains';
 import { CommonModule } from '@angular/common';
-import { Client } from '@teddy/domains';
 
 import { TeddyButtonComponent } from '../teddy-button/teddy-button.component';
 import { ClientModalService } from '../client-form/client-modal.service';
+
 
 @Component({
   selector: 'lib-client-card',
@@ -13,8 +14,10 @@ import { ClientModalService } from '../client-form/client-modal.service';
 })
 export class ClientCardComponent {
   @Input({ required: true }) client!: Client;
+  @Input() showActions = true;
   @Output() reloadData = new EventEmitter<void>();
-  private readonly clientFormService = inject(ClientModalService);
+  private readonly clientModalService = inject(ClientModalService);
+  private readonly clientsService = inject(ClientsService);
   handleEditClient(): void {
     this.openClientModal('edit');
   }
@@ -22,12 +25,15 @@ export class ClientCardComponent {
     this.openClientModal('delete');
   }
   openClientModal(action: 'delete' | 'edit') {
-    this.clientFormService.open({
+    this.clientModalService.open({
       data: this.client,
       action,
       onClose: () => {
         this.reloadData.emit();
       },
     });
+  }
+  handleTest() {
+    this.clientsService.changeClientSelection(this.client);
   }
 }

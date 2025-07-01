@@ -19,5 +19,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    &.justify-right{
+      justify-content: flex-end;
+    }
   }
 }

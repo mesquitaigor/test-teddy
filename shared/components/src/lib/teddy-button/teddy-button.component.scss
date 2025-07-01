@@ -1,6 +1,5 @@
 :host {
   display: flex;
-  transition: 0.2s;
   &.fill {
     width: 100%;
   }
@@ -51,9 +50,9 @@
     width: 100%;
     outline: none;
     cursor: pointer;
-    transition: 0.2s;
     justify-content: center;
     &:hover {
+      transition: 0.2s background-color;
       background-color: rgb(209, 91, 32);
     }
   }
