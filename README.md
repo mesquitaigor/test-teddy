@@ -73,9 +73,6 @@ docker run -it --rm -p 4200:4200 -p 4202:4202 -p 4203:4203 -p 4204:4204 nx-dev
 
 4. **Acesse a aplicação**:
    - **Shell (Principal)**: http://localhost:4200
-   - **User Identification**: http://localhost:4202
-   - **Clients Management**: http://localhost:4203
-   - **Selected Clients**: http://localhost:4204
 
 ### Execução Local (Desenvolvimento)
 
@@ -115,42 +112,10 @@ npx nx serve selected_clients
 - **Husky**: Git hooks
 - **Angular ESLint**: Regras específicas do Angular
 
-### Testes
-- **Jest**: Testes unitários
-- **Cypress**: Testes end-to-end
-- **Testing Library**: Utilitários de teste
-
 ### DevOps
 - **Docker**: Containerização
 - **Webpack**: Bundle e Module Federation
 - **Git**: Controle de versão com padrão de commits
-
-## 🎨 Design System
-
-O projeto implementa um design system compartilhado através da biblioteca `shared/components`, garantindo:
-- **Consistência visual** entre todos os micro-frontends
-- **Reutilização de componentes**
-- **Manutenibilidade** do código
-- **Padrões de UI/UX** unificados
-
-## 🧪 Testes
-
-### Testes Unitários
-```bash
-# Executar todos os testes
-npx nx test
-
-# Executar testes de um projeto específico
-npx nx test shell
-npx nx test clients
-```
-
-### Testes End-to-End
-```bash
-# Executar testes e2e
-npx nx e2e shell-e2e
-npx nx e2e clients-e2e
-```
 
 ## 📊 Gerenciamento de Estado
 
@@ -173,35 +138,6 @@ O projeto foi desenvolvido com **Mobile First** approach, utilizando:
 - **Tree shaking** para otimização de bundle
 - **Caching** estratégico
 
-## 🚢 Deploy
-
-O projeto está configurado para deploy na **Vercel** com:
-- Build automático via Nx
-- Deploy independente de cada micro-frontend
-- Configuração de rotas SPA
-
-## 🔧 Scripts Disponíveis
-
-```bash
-# Desenvolvimento
-npm start                    # Inicia o shell principal
-npx nx serve <app-name>     # Inicia um micro-frontend específico
-
-# Build
-npx nx build <app-name>     # Build de produção
-npx nx build --prod         # Build otimizado
-
-# Testes
-npx nx test                 # Testes unitários
-npx nx e2e <app-name>-e2e   # Testes end-to-end
-
-# Linting
-npx nx lint                 # Verificação de código
-npx nx format               # Formatação automática
-
-# Visualização
-npx nx graph                # Gráfico de dependências
-```
 
 ## 👥 Padrões de Commit
 
@@ -216,33 +152,4 @@ test: adiciona ou corrige testes
 chore: tarefas de manutenção
 ```
 
-## 📖 Decisões Técnicas
-
-### Por que Nx?
-- **Monorepo** facilita o compartilhamento de código
-- **Ferramentas integradas** para build, test e lint
-- **Dependency graph** para otimização de builds
-- **Generators** para padronização de código
-
-### Por que Module Federation?
-- **True micro-frontends** com deploy independente
-- **Runtime composition** para máxima flexibilidade
-- **Shared dependencies** para otimização
-- **Isolation** entre aplicações
-
-### Por que Angular 20?
-- **Standalone components** para melhor tree-shaking
-- **Signals** para reatividade otimizada
-- **Control flow syntax** para templates mais limpos
-- **Performance** melhorada significativamente
-
-## 📞 Suporte
-
-Para dúvidas ou problemas:
-1. Verifique se o Docker está rodando
-2. Confirme se todas as portas estão disponíveis
-3. Execute `docker logs <container-id>` para debug
-
----
-
-**Desenvolvido por Igor Maranhão** para o teste técnico da Teddy 🧸
+**Desenvolvido por Igor Mesquita** para o teste técnico da Teddy 🧸
