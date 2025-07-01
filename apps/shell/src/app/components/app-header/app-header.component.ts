@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { UserService } from '@teddy/auth';
 import { filter } from 'rxjs';
 
-
 @Component({
   selector: 'app-header',
   imports: [CommonModule, TeddyButtonComponent],

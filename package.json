@@ -70,7 +70,6 @@
     "includedScripts": []
   },
   "lint-staged": {
-    "*.{ts,css,html}": "prettier --write",
     "*.ts": "nx affected -t lint"
   }
 }

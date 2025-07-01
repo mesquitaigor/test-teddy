@@ -4,7 +4,6 @@ import { Client } from '@teddy/domains';
 
 import { ClientCardComponent } from '../client-card/client-card.component';
 
-
 @Component({
   selector: 'lib-clients-list',
   imports: [ClientCardComponent, CommonModule],

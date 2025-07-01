@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { TeddyButtonComponent } from '../teddy-button/teddy-button.component';
 import { ClientModalService } from '../client-form/client-modal.service';
 
-
 @Component({
   selector: 'lib-client-card',
   imports: [TeddyButtonComponent, CommonModule],

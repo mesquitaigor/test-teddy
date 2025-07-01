@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 import { ClientDataResponse, CreateClientData } from './ClientData';
 import { Client } from './Client';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -22,18 +21,16 @@ export class ClientsService {
       })
       .pipe(
         tap((response: ClientDataResponse) => {
-          const clients = response.clients.map(
-            (item) => {
-              const findedClient = this.clients$.getValue().find((c) => c.id === item.id);
-              const client = new Client(item.id, item.name, item.salary, item.companyValuation)
-              if (findedClient) {
-                client.selected = findedClient.selected;
-              } else {
-                client.selected = false;
-              }
-              return client;
-            },
-          );
+          const clients = response.clients.map((item) => {
+            const findedClient = this.clients$.getValue().find((c) => c.id === item.id);
+            const client = new Client(item.id, item.name, item.salary, item.companyValuation);
+            if (findedClient) {
+              client.selected = findedClient.selected;
+            } else {
+              client.selected = false;
+            }
+            return client;
+          });
           this.clients$.next(clients);
         }),
       );

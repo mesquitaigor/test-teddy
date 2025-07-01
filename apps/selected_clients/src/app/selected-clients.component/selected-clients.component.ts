@@ -4,7 +4,6 @@ import { ClientsService } from '@teddy/domains';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-selected-clients',
   imports: [ClientsListComponent, CommonModule, TeddyButtonComponent],
@@ -15,9 +14,8 @@ export class SelectedClientsComponent {
   private readonly clientsService = inject(ClientsService);
   private readonly router = inject(Router);
   readonly selectedClients$ = this.clientsService.selectedClients$;
-  handleCleanClients(){
+  handleCleanClients() {
     this.clientsService.resetSelection();
     this.router.navigate(['/clients']);
-
   }
 }
