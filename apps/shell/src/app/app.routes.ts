@@ -4,8 +4,7 @@ import { Route } from '@angular/router';
 export const appRoutes: Route[] = [
   {
     path: 'selected-clients',
-    loadChildren: () =>
-      import('selected_clients/Routes').then((m) => m.remoteRoutes),
+    loadChildren: () => import('selected_clients/Routes').then((m) => m.remoteRoutes),
     canActivate: [userIsIdentifiedGuard()],
   },
   {
@@ -15,8 +14,7 @@ export const appRoutes: Route[] = [
   },
   {
     path: '',
-    loadChildren: () =>
-      import('user_identification/Routes').then((m) => m.remoteRoutes),
+    loadChildren: () => import('user_identification/Routes').then((m) => m.remoteRoutes),
     canActivate: [userIsIdentifiedGuard(false)],
   },
 ];

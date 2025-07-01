@@ -6,11 +6,7 @@ import { Router, RouterModule } from '@angular/router';
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterModule.forRoot([{ path: '', component: NxWelcome }]),
-        App,
-        NxWelcome,
-      ],
+      imports: [RouterModule.forRoot([{ path: '', component: NxWelcome }]), App, NxWelcome],
     }).compileComponents();
   });
 
@@ -33,8 +29,6 @@ describe('App', () => {
     tick();
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Welcome shell'
-    );
+    expect(compiled.querySelector('h1')?.textContent).toContain('Welcome shell');
   }));
 });

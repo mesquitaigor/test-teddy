@@ -3,9 +3,9 @@ import { inject } from '@angular/core';
 
 import { UserService } from './user.service';
 
-export const userIsIdentifiedGuard: (
-  needIdentification?: boolean
-) => CanActivateFn = (needIdentification = true) => {
+export const userIsIdentifiedGuard: (needIdentification?: boolean) => CanActivateFn = (
+  needIdentification = true,
+) => {
   return (_, state) => {
     const router = inject(Router);
     const userService = inject(UserService);

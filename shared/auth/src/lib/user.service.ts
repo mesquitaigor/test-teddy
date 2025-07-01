@@ -16,11 +16,7 @@ export class UserService {
     }
   }
   userIsIdentified(): boolean {
-    return (
-      typeof JSON.parse(
-        localStorage.getItem(this.userIdentifiedKey) || 'false'
-      ) === 'string'
-    );
+    return typeof JSON.parse(localStorage.getItem(this.userIdentifiedKey) || 'false') === 'string';
   }
   forgetUser(): void {
     localStorage.removeItem(this.userIdentifiedKey);

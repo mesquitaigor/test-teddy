@@ -19,9 +19,7 @@ export class App implements OnInit {
   ngOnInit() {
     combineLatest([
       this.userService.user$,
-      this.router.events.pipe(
-        filter((event) => event instanceof NavigationEnd)
-      ),
+      this.router.events.pipe(filter((event) => event instanceof NavigationEnd)),
     ]).subscribe(([user, event]) => {
       if (user && event.urlAfterRedirects !== '/') {
         this.showHeader = true;

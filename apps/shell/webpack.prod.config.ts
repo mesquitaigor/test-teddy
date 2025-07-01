@@ -11,5 +11,5 @@ export default withModuleFederation(
   {
     ...config,
   },
-  { dts: false }
+  { dts: false },
 );

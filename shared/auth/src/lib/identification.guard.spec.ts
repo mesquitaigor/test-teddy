@@ -5,9 +5,7 @@ import { identificationGuard } from './identification.guard';
 
 describe('identificationGuardGuard', () => {
   const executeGuard: CanActivateFn = (...guardParameters) =>
-    TestBed.runInInjectionContext(() =>
-      identificationGuard(...guardParameters)
-    );
+    TestBed.runInInjectionContext(() => identificationGuard(...guardParameters));
 
   beforeEach(() => {
     TestBed.configureTestingModule({});

@@ -12,35 +12,28 @@ export class ClientsService {
   private readonly httpClient = inject(HttpClient);
   readonly clients$ = new BehaviorSubject<Client[]>([]);
   readonly selectedClients$ = this.clients$.pipe(
-    map((clients) => clients.filter((client) => client.selected))
+    map((clients) => clients.filter((client) => client.selected)),
   );
   load(page: number, limit: number): Observable<ClientDataResponse> {
     return this.httpClient
-      .get<ClientDataResponse>(
-        'https://boasorte.teddybackoffice.com.br/users',
-        {
-          params: { page, limit },
-        }
-      )
+      .get<ClientDataResponse>('https://boasorte.teddybackoffice.com.br/users', {
+        params: { page, limit },
+      })
       .pipe(
         tap((response: ClientDataResponse) => {
           const clients = response.clients.map(
-            (item) =>
-              new Client(item.id, item.name, item.salary, item.companyValuation)
+            (item) => new Client(item.id, item.name, item.salary, item.companyValuation),
           );
           this.clients$.next(clients);
-        })
+        }),
       );
   }
   create(client: CreateClientData): Observable<void> {
-    return this.httpClient.post<void>(
-      'https://boasorte.teddybackoffice.com.br/users',
-      {
-        name: client.name,
-        salary: client.salary,
-        companyValuation: client.companyValuation,
-      }
-    );
+    return this.httpClient.post<void>('https://boasorte.teddybackoffice.com.br/users', {
+      name: client.name,
+      salary: client.salary,
+      companyValuation: client.companyValuation,
+    });
   }
 
   update(client: Client): Observable<void> {
@@ -50,13 +43,12 @@ export class ClientsService {
         name: client.name,
         salary: client.salary,
         companyValuation: client.companyValuation,
-      }
+      },
     );
   }
   delete(clientId: number): Observable<string> {
-    return this.httpClient.delete(
-      `https://boasorte.teddybackoffice.com.br/users/${clientId}`,
-      { responseType: 'text' }
-    );
+    return this.httpClient.delete(`https://boasorte.teddybackoffice.com.br/users/${clientId}`, {
+      responseType: 'text',
+    });
   }
 }

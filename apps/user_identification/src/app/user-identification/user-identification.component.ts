@@ -9,12 +9,7 @@ import { AutofocusDirective } from './autofocus.directive';
 
 @Component({
   selector: 'app-user-identification',
-  imports: [
-    TeddyButtonComponent,
-    CommonModule,
-    FormsModule,
-    AutofocusDirective,
-  ],
+  imports: [TeddyButtonComponent, CommonModule, FormsModule, AutofocusDirective],
   templateUrl: './user-identification.component.html',
   styleUrls: ['./user-identification.component.scss'],
 })

@@ -2,7 +2,6 @@ import nx from '@nx/eslint-plugin';
 
 import baseConfig from './eslint.base.config.mjs';
 
-
 export default [
   ...baseConfig,
   {

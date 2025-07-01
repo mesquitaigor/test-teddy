@@ -18,13 +18,7 @@ import { ClientModalService } from './client-modal.service';
 
 @Component({
   selector: 'lib-client-form',
-  imports: [
-    CommonModule,
-    FormsModule,
-    TeddyButtonComponent,
-    MaskitoDirective,
-    ReactiveFormsModule,
-  ],
+  imports: [CommonModule, FormsModule, TeddyButtonComponent, MaskitoDirective, ReactiveFormsModule],
   templateUrl: './client-modal.component.html',
   styleUrl: './client-modal.component.scss',
 })
@@ -57,13 +51,13 @@ export class ClientModalComponent implements OnInit {
             `R$ ${state.data.salary
               .toFixed(2)
               .replace('.', ',')
-              .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`
+              .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`,
           );
           this.control.get('companyValuationInput')?.setValue(
             `R$ ${state.data.companyValuation
               .toFixed(2)
               .replace('.', ',')
-              .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`
+              .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`,
           );
         }
         switch (state.action) {
@@ -109,7 +103,7 @@ export class ClientModalComponent implements OnInit {
         .pipe(
           finalize(() => {
             this.executing = false;
-          })
+          }),
         )
         .subscribe({
           next: () => {
@@ -133,18 +127,13 @@ export class ClientModalComponent implements OnInit {
     const salary = this.getClientSalaryInputValue();
     const companyValuation = this.getClientCompanyValuationInputValue();
     if (name && this.modalData.data?.id && salary && companyValuation) {
-      const client = new Client(
-        this.modalData.data?.id,
-        name,
-        salary,
-        companyValuation
-      );
+      const client = new Client(this.modalData.data?.id, name, salary, companyValuation);
       this.clientService
         .update(client)
         .pipe(
           finalize(() => {
             this.executing = false;
-          })
+          }),
         )
         .subscribe({
           next: () => {
@@ -160,17 +149,13 @@ export class ClientModalComponent implements OnInit {
   private getClientCompanyValuationInputValue(): number | void {
     const companyValuation = this.control.get('companyValuationInput')?.value;
     if (companyValuation) {
-      return parseFloat(
-        companyValuation.replace('R$ ', '').replace('.', '').replace(',', '.')
-      );
+      return parseFloat(companyValuation.replace('R$ ', '').replace('.', '').replace(',', '.'));
     }
   }
   private getClientSalaryInputValue(): number | void {
     const salary = this.control.get('salaryInput')?.value;
     if (salary) {
-      return parseFloat(
-        salary.replace('R$ ', '').replace('.', '').replace(',', '.')
-      );
+      return parseFloat(salary.replace('R$ ', '').replace('.', '').replace(',', '.'));
     }
   }
   handleDeleteClient(): void {
@@ -182,7 +167,7 @@ export class ClientModalComponent implements OnInit {
         .pipe(
           finalize(() => {
             this.executing = false;
-          })
+          }),
         )
         .subscribe({
           next: () => {

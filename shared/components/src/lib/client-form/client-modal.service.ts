@@ -14,11 +14,7 @@ export class ClientModalService {
   }>({
     stt: false,
   });
-  open(data?: {
-    data?: Client;
-    onClose?: () => void;
-    action?: modalAction;
-  }): void {
+  open(data?: { data?: Client; onClose?: () => void; action?: modalAction }): void {
     if (data && !data.action) {
       data.action = 'create';
     }
