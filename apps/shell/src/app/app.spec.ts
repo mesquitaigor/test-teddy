@@ -15,7 +15,7 @@ import { App } from './app';
 })
 class MockAppHeaderComponent { }
 
-fdescribe('App', () => {
+describe(App.name, () => {
   let mockUserService: Partial<UserService>;
   let mockRouter: Partial<Router>;
   let routerEventsSubject: Subject<NavigationEnd>;
