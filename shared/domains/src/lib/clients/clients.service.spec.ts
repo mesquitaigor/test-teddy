@@ -8,7 +8,7 @@ import { CreateClientData } from './ClientData';
 import { Client } from './Client';
 
 
-fdescribe('ClientsService', () => {
+describe('ClientsService', () => {
   let service: ClientsService;
   let httpMock: HttpTestingController;
 
