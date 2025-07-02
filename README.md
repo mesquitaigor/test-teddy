@@ -1,6 +1,6 @@
 # 🧸 Teddy - Sistema de Gerenciamento de Clientes
 
-Sistema web desenvolvido com **micro-frontends** para o teste técnico da Teddy, implementando funcionalidades completas de cadastro, listagem, seleção e gerenciamento de clientes com arquitetura moderna e escalável.
+Sistema web desenvolvido com **micro-frontends** para o teste técnico, implementando funcionalidades completas de cadastro, listagem, seleção e gerenciamento de clientes com arquitetura moderna e escalável.
 
 ![Angular](https://img.shields.io/badge/Angular-20.0-red?style=flat-square&logo=angular)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?style=flat-square&logo=typescript)
@@ -9,7 +9,7 @@ Sistema web desenvolvido com **micro-frontends** para o teste técnico da Teddy,
 
 ## 🎯 Sobre o Projeto
 
-Este projeto foi desenvolvido como parte do processo seletivo para a vaga de **Front-End Pleno** na Teddy. A aplicação implementa um sistema completo de gerenciamento de clientes com as seguintes funcionalidades:
+Este projeto foi desenvolvido como parte do processo seletivo para a vaga de **Front-End Pleno**. A aplicação implementa um sistema completo de gerenciamento de clientes com as seguintes funcionalidades:
 
 - **Tela de identificação**: Usuário insere seu nome para acessar o sistema
 - **Dashboard de clientes**: Listagem completa com funcionalidades CRUD
@@ -51,7 +51,6 @@ shared/
 
 ### Pré-requisitos
 - **Docker** instalado no sistema
-- **4GB RAM** disponível para os containers
 
 ### Execução com Docker (Recomendado)
 
@@ -166,4 +165,4 @@ test: adiciona ou corrige testes
 chore: tarefas de manutenção
 ```
 
-**Desenvolvido por Igor Mesquita** para o teste técnico da Teddy 🧸
+**Desenvolvido por Igor Mesquita**
