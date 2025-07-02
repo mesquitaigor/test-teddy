@@ -92,6 +92,20 @@ npx nx serve clients
 npx nx serve selected_clients
 ```
 
+## 🧪 Testes Unitários de Demonstração
+
+Foram escritos apenas 3 testes unitários de demonstração:
+- Um no app **shell**
+- Um no app **user_identification**
+- Um na lib **domain**
+
+### Como Executar os Testes
+
+Para executar os testes, utilize o seguinte comando:
+```bash
+npx nx run-many -t test -p shell,user_identification,domain
+```
+
 ## 🛠️ Tecnologias e Ferramentas
 
 ### Core Stack
